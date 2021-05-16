@@ -69,6 +69,7 @@ fetch("http://localhost:3000/login", {
 Este endpoint le devolverá el token necesario para hacer el request de personajes
 * Personajes
 
+
 ```
 /characters
 ```
