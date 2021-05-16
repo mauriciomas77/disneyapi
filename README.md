@@ -51,7 +51,6 @@ Luego de de hacer el request obtendrá un objeto con la información del usuario
 ```
 /login {POST}
 ```
-
 Es posible hacer el login con un request como el siguiente:
 ```
 fetch("http://localhost:3000/login", {
