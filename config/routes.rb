@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :characters, only: [:index]
+  resources :characters, only: [:index, :create, :destroy, :update]
+  resources :movies, only: [:index]
 end

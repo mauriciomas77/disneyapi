@@ -5,12 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+[
+  Character,
+  Movie,
+  Genre,
+].each { |model_class| model_class.destroy_all }
+puts "Clearing database"
+
+
 def film_data(movie)
   require 'uri'
   require 'net/http'
   require 'openssl'
 
-  # url = URI("https://imdb8.p.rapidapi.com/auto-complete?q=#{movie.title}")
   url = URI("https://imdb8.p.rapidapi.com/title/find?q=#{movie.title}")
   http = Net::HTTP.new(url.host, url.port)
   http.use_ssl = true
@@ -39,12 +46,6 @@ rescue
 end
 
 
-[
-  Character,
-  Movie,
-].each { |model_class| model_class.destroy_all }
-
-
 require 'json'
 
 filepath = 'db/characters.json'
@@ -53,7 +54,6 @@ serialized_chars = File.read(filepath)
 
 characters = JSON.parse(serialized_chars)
 
-# p characters["data"][10]["films"][0]
 iterator = 1
 characters["data"].each_with_index do |char, indx|
   character = Character.new(
