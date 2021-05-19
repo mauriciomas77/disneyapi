@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         status: {code: 200, message: 'Signed up sucessfully.'},
         data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }
+      UserNotifierMailer.send_signup_email(resource).deliver_later
     else
       render json: {
         status: {message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence}"}
