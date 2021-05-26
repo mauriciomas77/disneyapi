@@ -7,7 +7,7 @@ Stack usado
 - FastJsonApi Serializer
 
 
-#
+## Nota: Los datos de la BASE de datos no necesariamente son reales. La API se desarrolla a fines didácticos
 ![3513ecc960b9ba071bcde039205db3e8.png](:/94adc277f4cc42528a6c170b53cf5628)
 ## Endpoints
 
@@ -85,7 +85,7 @@ Este endpoint le devolverá el token necesario para hacer el request de personaj
 ```
 Para poder acceder a este endpoint debe incluir el token activo en el header del request
 ```
-fetch("http://localhost:3000/characters", {
+fetch("https://apidisney.herokuapp.com/characters", {
   headers: {
     "Content-Type": "application/json",
     Authorization: localStorage.getItem("token"),
@@ -104,3 +104,26 @@ fetch("http://localhost:3000/characters", {
 .catch((err) => console.error(err));
 ```
 El endpoint devolverá un objeto con todos los personajes de la base de datos y la llave include con todas las películas y generos asociados.
+
+```
+/movies
+```
+Para poder acceder a este endpoint debe incluir el token activo en el header del request
+```
+fetch("https://apidisney.herokuapp.com/movies", {
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: localStorage.getItem("token"),
+  },
+})
+```
+
+## Otros endpoints disponibles
+
+GET /characters?name=nombre
+GET /characters?age=edad
+GET /characters?movies=idMovie
+
+GET /movies?name=nombre
+GET /movies?genre=idGenero
+GET /movies?order=ASC|DESC
