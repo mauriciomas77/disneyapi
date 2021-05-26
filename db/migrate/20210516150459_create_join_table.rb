@@ -13,7 +13,6 @@ class CreateJoinTable < ActiveRecord::Migration[6.0]
       t.integer :released_year
       t.integer :rating
       t.string :image_url
-      t.references :genre, null: false, foreign_key: true
     end
 
     create_table :characters_movies, id: false do |t|

@@ -62,7 +62,7 @@ characters["data"].each_with_index do |char, indx|
                             weigth: rand(30.0..90),
                             history: "This is the history of #{char["name"]}",
                             image_url: char["imageUrl"])
-  character.save!
+  character.save!(validate: false)
   movies_array = characters["data"][indx]["films"]
   movies_array.each do |film|
     sleep 1
