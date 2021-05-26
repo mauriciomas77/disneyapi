@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   protect_from_forgery with: :null_session
   respond_to :json
+
   private
 
   def respond_with(resource, _opts = {})
